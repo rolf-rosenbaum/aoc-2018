@@ -6,10 +6,23 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("io.kotest:kotest-assertions-core:5.4.2")
+    
+}
+
 tasks {
     sourceSets {
         main {
-            java.srcDirs("src")
+            java.srcDirs("src/main")
+        }
+        test {
+            java.srcDirs("src/test")
         }
     }
 
