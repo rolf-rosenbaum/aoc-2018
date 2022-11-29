@@ -38,12 +38,11 @@ private fun parseSteps(input: List<String>): MutableMap<String, MutableList<Stri
     return steps
 }
 
-fun Steps.execute(step: String): Int {
+fun Steps.execute(step: String) {
     forEach { (_, pres) ->
         pres.remove(step)
     }
     if (this[step]?.isEmpty() != false) this.remove(step)
-    return step.first().executionTime()
 }
 
 fun part2(input: List<String>): Int {
