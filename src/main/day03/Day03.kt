@@ -12,7 +12,7 @@ private fun addClaims(input: List<String>): MutableMap<Point, MutableSet<Claim>>
     val points = mutableMapOf<Point, MutableSet<Claim>>()
 
     input.forEach { line ->
-        val claim = extracted(line)
+        val claim = line.toClaim()
         (claim.startPoint.first until (claim.startPoint.first + claim.width)).forEach { x ->
             (claim.startPoint.second until (claim.startPoint.second + claim.height)).forEach { y ->
                 if (points.containsKey(x to y)) {
@@ -30,7 +30,7 @@ fun part2(input: List<String>): Int {
     val claims: MutableMap<Claim, MutableList<Point>> = mutableMapOf()
     
     input.forEach { line ->
-        val claim = extracted(line)
+        val claim = line.toClaim()
         
 
         (claim.startPoint.first until (claim.startPoint.first + claim.width)).forEach { x ->
@@ -53,8 +53,8 @@ fun part2(input: List<String>): Int {
     return singularClaim.keys.first().id.toInt()
 }
 
-private fun extracted(line: String): Claim {
-    val foo = line.split(" @ ")
+private fun String.toClaim(): Claim {
+    val foo = split(" @ ")
     val id = foo.first().substring(1)
     val split = foo[1].split(": ")
     val pos = split.first()

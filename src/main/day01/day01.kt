@@ -25,6 +25,6 @@ fun main() {
 
 
     val input = readInput("main/day01/Day01")
-    println(part1(input))
-    println(part2(input))
+    println(_2022_day01.part1(input))
+    println(_2022_day01.part2(input))
 }
